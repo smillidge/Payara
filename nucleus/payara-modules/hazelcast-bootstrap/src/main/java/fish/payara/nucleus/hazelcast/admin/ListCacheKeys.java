@@ -39,12 +39,15 @@
  */
 package fish.payara.nucleus.hazelcast.admin;
 
+import com.hazelcast.cache.impl.CacheProxy;
 import com.hazelcast.core.DistributedObject;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import com.sun.enterprise.config.serverbeans.Domain;
 import fish.payara.nucleus.hazelcast.HazelcastCore;
+import java.util.Iterator;
 import java.util.Properties;
+import javax.cache.Cache;
 import javax.inject.Inject;
 import org.glassfish.api.ActionReport;
 import org.glassfish.api.I18n;
@@ -110,6 +113,21 @@ public class ListCacheKeys implements AdminCommand {
                                 try {
                                     builder.append(key.toString()).append(",\n");
                                 } catch (Exception cnfe) {
+                                    builder.append(cnfe.getMessage()).append(",\n");
+                                }
+                            }
+                            builder.append("}\n");
+                        }
+                    } else if (dobject instanceof CacheProxy) {
+                        CacheProxy jcache = (CacheProxy)dobject;
+                        if (cacheName == null || cacheName.isEmpty() || cacheName.equals(jcache.getName())) {
+                            builder.append("JCache ").append(jcache.getName()).append("\n{");
+                            Iterator<javax.cache.Cache.Entry<?,?>> entries = jcache.iterator(10);
+                            while (entries.hasNext()) {
+                                try {
+                                    Cache.Entry<?, ?> next = entries.next();
+                                    builder.append(next.getKey().toString()).append(",\n");
+                                }catch (Exception cnfe) {
                                     builder.append(cnfe.getMessage()).append(",\n");
                                 }
                             }

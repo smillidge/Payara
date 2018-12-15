@@ -37,7 +37,7 @@
  * only if the new code is made subject to such option by the copyright
  * holder.
  */
-
+// Portions Copyright [2018] [Payara Foundation and/or its affiliates]
 package org.glassfish.concurrent.config;
 
 import com.sun.enterprise.config.modularity.ConfigBeanInstaller;
@@ -45,14 +45,13 @@ import com.sun.enterprise.config.modularity.annotation.CustomConfiguration;
 import com.sun.enterprise.config.serverbeans.BindableResource;
 import com.sun.enterprise.config.serverbeans.Resource;
 import com.sun.enterprise.config.serverbeans.customvalidators.ReferenceConstraint;
+import java.beans.PropertyVetoException;
 import org.glassfish.admin.cli.resources.ResourceConfigCreator;
 import org.glassfish.api.admin.RestRedirect;
 import org.glassfish.api.admin.RestRedirects;
 import org.glassfish.admin.cli.resources.UniqueResourceNameConstraint;
-import org.glassfish.hk2.runlevel.RunLevel;
 import org.jvnet.hk2.annotations.Service;
 import org.jvnet.hk2.config.*;
-import org.jvnet.hk2.config.types.PropertyBag;
 import org.glassfish.resourcebase.resources.ResourceTypeOrder;
 import org.glassfish.resourcebase.resources.ResourceDeploymentOrder;
 import javax.validation.Payload;
@@ -74,6 +73,24 @@ import javax.validation.Payload;
 public interface ManagedScheduledExecutorService extends ConfigBeanProxy,
         Resource, BindableResource, Payload, ConcurrencyResource, ManagedExecutorServiceBase {
 
+        /**
+     * Gets the value of the RemoveOnCancelPolicy property.
+     *
+     * @return possible object is
+     *         {@link String }
+     */
+    @Attribute(defaultValue="false", dataType=Boolean.class)
+    String getRemoveOnCancelPolicy();
+
+    /**
+     * Sets the value of the RemoveOnCancelPolicy property.
+     *
+     * @param value allowed object is
+     *              {@link String }
+     */
+    void setRemoveOnCancelPolicy(String value) throws PropertyVetoException;
+    
+    
     @DuckTyped
     String getIdentity();
 

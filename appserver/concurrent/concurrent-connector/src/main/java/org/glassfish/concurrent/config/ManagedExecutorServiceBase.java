@@ -37,6 +37,7 @@
  * only if the new code is made subject to such option by the copyright
  * holder.
  */
+// Portions Copyright [2018] [Payara Foundation and/or its affiliates]
 
 package org.glassfish.concurrent.config;
 
@@ -73,6 +74,7 @@ public interface ManagedExecutorServiceBase extends ConfigBeanProxy,
      *
      * @param value allowed object is
      *              {@link String }
+     * @throws java.beans.PropertyVetoException
      */
     void setThreadPriority(String value) throws PropertyVetoException;
 
@@ -90,6 +92,7 @@ public interface ManagedExecutorServiceBase extends ConfigBeanProxy,
      *
      * @param value allowed object is
      *              {@link String }
+     * @throws java.beans.PropertyVetoException
      */
     void setLongRunningTasks(String value) throws PropertyVetoException;
     
@@ -108,6 +111,7 @@ public interface ManagedExecutorServiceBase extends ConfigBeanProxy,
      *
      * @param value allowed object is
      *              {@link String }
+     * @throws java.beans.PropertyVetoException
      */
     void setHungAfterSeconds(String value) throws PropertyVetoException;
 
@@ -124,6 +128,7 @@ public interface ManagedExecutorServiceBase extends ConfigBeanProxy,
      * Sets the value of the coreSize property.
      *
      * @param value allowed object is {@link String }
+     * @throws java.beans.PropertyVetoException
      */
     void setCorePoolSize(String value) throws PropertyVetoException;
 
@@ -140,6 +145,7 @@ public interface ManagedExecutorServiceBase extends ConfigBeanProxy,
      * Sets the value of the keepAliveSeconds property.
      *
      * @param value allowed object is {@link String }
+     * @throws java.beans.PropertyVetoException
      */
     void setKeepAliveSeconds(String value) throws PropertyVetoException;
 
@@ -156,6 +162,7 @@ public interface ManagedExecutorServiceBase extends ConfigBeanProxy,
      * Sets the value of the threadLifetimeSeconds property.
      *
      * @param value allowed object is {@link String }
+     * @throws java.beans.PropertyVetoException
      */
     void setThreadLifetimeSeconds(String value) throws PropertyVetoException;
 }

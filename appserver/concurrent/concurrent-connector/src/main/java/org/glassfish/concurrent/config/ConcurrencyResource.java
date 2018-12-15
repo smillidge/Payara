@@ -37,7 +37,7 @@
  * only if the new code is made subject to such option by the copyright
  * holder.
  */
-
+// Portions Copyright [2018] [Payara Foundation and/or its affiliates]
 package org.glassfish.concurrent.config;
 
 import org.jvnet.hk2.config.*;
@@ -67,6 +67,7 @@ public interface ConcurrencyResource extends PropertyBag  {
      *
      * @param value allowed object is
      *              {@link String }
+     * @throws java.beans.PropertyVetoException
      */
     void setContextInfoEnabled(String value) throws PropertyVetoException;
 
@@ -85,6 +86,7 @@ public interface ConcurrencyResource extends PropertyBag  {
      *
      * @param value allowed object is
      *              {@link String }
+     * @throws java.beans.PropertyVetoException
      */
     void setContextInfo(String value) throws PropertyVetoException;
 
@@ -102,6 +104,7 @@ public interface ConcurrencyResource extends PropertyBag  {
      *
      * @param value allowed object is
      *              {@link String }
+     * @throws java.beans.PropertyVetoException
      */
     void setDescription(String value) throws PropertyVetoException;
 
@@ -109,5 +112,6 @@ public interface ConcurrencyResource extends PropertyBag  {
         Properties as per {@link PropertyBag}
      */
     @Element
+    @Override
     List<Property> getProperty();
 }

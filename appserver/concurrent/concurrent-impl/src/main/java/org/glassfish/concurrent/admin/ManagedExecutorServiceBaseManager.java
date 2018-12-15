@@ -89,6 +89,7 @@ public abstract class ManagedExecutorServiceBaseManager implements ResourceManag
     protected String threadLifetimeSeconds = "0";
     protected String enabled = Boolean.TRUE.toString();
     protected String enabledValueForTarget = Boolean.TRUE.toString();
+    protected String removeOnCancelPolicy = Boolean.FALSE.toString();
 
     @Inject
     protected ResourceUtil resourceUtil;
@@ -174,6 +175,7 @@ public abstract class ManagedExecutorServiceBaseManager implements ResourceManag
             enabled = (String) attributes.get(ENABLED);
         }
         enabledValueForTarget = (String) attributes.get(ENABLED); 
+        removeOnCancelPolicy = (String)attributes.get(REMOVE_ON_CANCEL_POLICY);
     }
 
     protected ManagedExecutorServiceBase createResource(Resources param, Properties properties) throws PropertyVetoException, TransactionFailure {

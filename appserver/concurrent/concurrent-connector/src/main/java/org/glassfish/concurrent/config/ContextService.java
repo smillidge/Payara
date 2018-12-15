@@ -37,6 +37,7 @@
  * only if the new code is made subject to such option by the copyright
  * holder.
  */
+// Portions Copyright [2018] [Payara Foundation and/or its affiliates]
 
 package org.glassfish.concurrent.config;
 
@@ -49,7 +50,6 @@ import org.glassfish.admin.cli.resources.ResourceConfigCreator;
 import org.glassfish.api.admin.RestRedirect;
 import org.glassfish.api.admin.RestRedirects;
 import org.glassfish.admin.cli.resources.UniqueResourceNameConstraint;
-import org.glassfish.hk2.runlevel.RunLevel;
 import org.jvnet.hk2.annotations.Service;
 import org.jvnet.hk2.config.*;
 import org.glassfish.resourcebase.resources.ResourceTypeOrder;
@@ -74,7 +74,12 @@ import javax.validation.Payload;
 public interface ContextService extends ConfigBeanProxy, Resource,
         BindableResource, ConcurrencyResource, Payload  {
 
+    /**
+     * JNDI name of the resource
+     * @return
+     */
     @DuckTyped
+    @Override
     String getIdentity();
 
     class Duck {

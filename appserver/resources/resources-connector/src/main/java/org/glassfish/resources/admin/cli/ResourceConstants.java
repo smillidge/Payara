@@ -37,7 +37,7 @@
  * only if the new code is made subject to such option by the copyright
  * holder.
  *
- * Portions Copyright [2017] Payara Foundation and/or affiliates
+ * Portions Copyright [2018] Payara Foundation and/or affiliates
  */
 
 package org.glassfish.resources.admin.cli;
@@ -258,6 +258,7 @@ public final class ResourceConstants {
     public static final String KEEP_ALIVE_SECONDS = "keep-alive-seconds";
     public static final String THREAD_LIFETIME_SECONDS = "thread-lifetime-seconds";
     public static final String TASK_QUEUE_CAPACITY = "task-queue-capacity";
+    public static final String REMOVE_ON_CANCEL_POLICY = "remove-on-cancel-policy";
 
     public static final String SYSTEM_ALL_REQ = "system-all-req";
 }
